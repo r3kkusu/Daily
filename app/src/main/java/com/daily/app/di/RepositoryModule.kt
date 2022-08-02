@@ -1,5 +1,6 @@
 package com.daily.app.di
 
+import com.daily.app.data.remote.AppAPI
 import com.daily.app.data.repositories.AppRepoImp
 import com.daily.app.domain.repositories.AppRepo
 import dagger.Binds
@@ -15,7 +16,7 @@ interface RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindAppRepo(
-        apiRepoImp: AppRepoImp
+        appRepoImp: AppRepoImp
     ): AppRepo
 
 }

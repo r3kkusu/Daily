@@ -1,9 +1,6 @@
 package com.daily.app.di
 
-import android.app.Application
-import androidx.room.Room
 import com.daily.app.common.Constants
-import com.daily.app.data.local.AppDB
 import com.daily.app.data.remote.AppAPI
 import dagger.Module
 import dagger.Provides
@@ -32,13 +29,13 @@ object AppModule {
             .create(AppAPI::class.java)
     }
 
-    @Provides
-    @Singleton
-    fun provideAppDB(app: Application): AppDB {
-        return Room.databaseBuilder(
-            app,
-            AppDB::class.java,
-            Constants.APP_DATABASE
-        ).build()
-    }
+//    @Provides
+//    @Singleton
+//    fun provideAppDB(app: Application): AppDB {
+//        return Room.databaseBuilder(
+//            app,
+//            AppDB::class.java,
+//            Constants.APP_DATABASE
+//        ).build()
+//    }
 }

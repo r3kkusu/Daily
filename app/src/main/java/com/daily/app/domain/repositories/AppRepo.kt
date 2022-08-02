@@ -6,11 +6,11 @@ import kotlinx.coroutines.flow.Flow
 
 interface AppRepo {
 
-    fun getTopHeadlines(): Flow<Resource<List<Article>>>
-
-    fun getTopicHeadlines(): Flow<Resource<List<Article>>>
-
-    fun getLocalNews(): Flow<Resource<List<Article>>>
-
-    fun searchNews(): Flow<Resource<List<Article>>>
+    fun getTopHeadlines(country: String, lang: String, limit: String): Flow<Resource<List<Article>>>
+//
+//    fun getTopicHeadlines(): Flow<Resource<List<Article>>>
+//
+//    fun getLocalNews(): Flow<Resource<List<Article>>>
+//
+//    fun searchNews(): Flow<Resource<List<Article>>>
 }
