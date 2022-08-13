@@ -1,10 +1,10 @@
 package com.daily.app.data.remote.dto
 
 data class ArticleDto(
-    val description: String,
-    val link: String,
-    val published_date: String,
-    val source: SourceDto,
-    val thumbnail: String,
-    val title: String
+    var description: String,
+    var link: String,
+    var published_date: String,
+    var source: SourceDto,
+    var thumbnail: String,
+    var title: String
 )
