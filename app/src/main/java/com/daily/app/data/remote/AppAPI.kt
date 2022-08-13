@@ -40,9 +40,7 @@ interface AppAPI {
         @Query("q") q: String,
         @Query("country") country: String,
         @Query("lang") lang: String,
-        @Query("source") source: String,
         @Query("limit") limit: String,
-        @Query("when") date: String
     ): ResponseDto
 
     @Headers(

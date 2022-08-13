@@ -21,30 +21,86 @@ class MainViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val TAG = "MainViewModel"
+    private val defaultGeolocation = "New York"
+    private val defaultCountry = "US"
+    private val defaultLimit = "50"
+    private val defaultLanguage = "en"
+
     private val articles = MutableLiveData<Resource<List<Article>>>()
     var job : Job? = null
 
     init {
-        getTopHeadlines()
+//        getTopHeadlines()
+//        getTopicHeadlines()
+//        getLocalNews()
+        searchNews()
     }
 
     fun getTopHeadlines(
-        country: String = "US",
-        lang: String = "en",
-        limit: String = "50"
+        country: String = defaultCountry,
+        lang: String = defaultLanguage,
+        limit: String = defaultLimit
     ) {
         job?.cancel()
         job = viewModelScope.launch(Dispatchers.IO) {
-
             appRepo.getTopHeadlines(country, lang, limit)
                 .collect { result ->
                     withContext(Dispatchers.Main) {
                         articles.postValue(result)
                     }
                 }
-
         }
+    }
 
+    fun getTopicHeadlines(
+        topic: String = "WORLD",
+        country: String = defaultCountry,
+        lang: String = defaultLanguage,
+        limit: String = defaultLimit
+    ) {
+        job?.cancel()
+        job = viewModelScope.launch(Dispatchers.IO) {
+            appRepo.getTopicHeadlines(topic, country, lang, limit)
+                .collect { result ->
+                    withContext(Dispatchers.Main) {
+                        articles.postValue(result)
+                    }
+                }
+        }
+    }
+
+    fun getLocalNews(
+        geo: String = defaultGeolocation,
+        country: String = defaultCountry,
+        lang: String = defaultLanguage,
+        limit: String = defaultLimit
+    ) {
+        job?.cancel()
+        job = viewModelScope.launch(Dispatchers.IO) {
+            appRepo.getLocalNews(geo, country, lang, limit)
+                .collect { result ->
+                    withContext(Dispatchers.Main) {
+                        articles.postValue(result)
+                    }
+                }
+        }
+    }
+
+    fun searchNews(
+        term: String = "Covid",
+        country: String = defaultCountry,
+        lang: String = defaultLanguage,
+        limit: String = defaultLimit,
+    ) {
+        job?.cancel()
+        job = viewModelScope.launch(Dispatchers.IO) {
+            appRepo.searchNews(term, country, lang, limit)
+                .collect { result ->
+                    withContext(Dispatchers.Main) {
+                        articles.postValue(result)
+                    }
+                }
+        }
     }
 
     fun getArticles() : LiveData<Resource<List<Article>>> {

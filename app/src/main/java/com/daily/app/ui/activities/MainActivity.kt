@@ -19,9 +19,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         viewModel.getArticles().observe(this) {
-            Log.d(TAG, "onCreate: $it")
             when(it) {
                 is Resource.Success -> {
+                    Log.d(TAG, "onCreate: $it")
                 }
                 is Resource.Error -> {
                 }
