@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Daily</string>
+    <string name="top_news">Top News</string>
+    <string name="topic">Topic</string>
+    <string name="search">Search</string>
+    <string name="local_news">Local News</string>
 </resources>
