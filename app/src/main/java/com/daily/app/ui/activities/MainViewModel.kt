@@ -30,27 +30,12 @@ class MainViewModel @Inject constructor(
     var job : Job? = null
 
     init {
-//        getTopHeadlines()
         getTopicHeadlines()
 //        getLocalNews()
 //        searchNews()
     }
 
-    fun getTopHeadlines(
-        country: String = defaultCountry,
-        lang: String = defaultLanguage,
-        limit: String = defaultLimit
-    ) {
-        job?.cancel()
-        job = viewModelScope.launch(Dispatchers.IO) {
-            appRepo.getTopHeadlines(country, lang, limit)
-                .collect { result ->
-                    withContext(Dispatchers.Main) {
-                        articles.postValue(result)
-                    }
-                }
-        }
-    }
+
 
     fun getTopicHeadlines(
         topic: String = "WORLD",
