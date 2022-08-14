@@ -31,9 +31,9 @@ class MainViewModel @Inject constructor(
 
     init {
 //        getTopHeadlines()
-//        getTopicHeadlines()
+        getTopicHeadlines()
 //        getLocalNews()
-        searchNews()
+//        searchNews()
     }
 
     fun getTopHeadlines(
