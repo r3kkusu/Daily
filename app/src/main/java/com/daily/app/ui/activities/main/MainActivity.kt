@@ -1,4 +1,4 @@
-package com.daily.app.ui.activities
+package com.daily.app.ui.activities.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

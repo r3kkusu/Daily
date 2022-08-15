@@ -15,7 +15,7 @@ import butterknife.ButterKnife
 import com.bumptech.glide.RequestManager
 import com.daily.app.R
 import com.daily.app.common.Resource
-import com.daily.app.ui.adapters.NewsAdapater
+import com.daily.app.ui.adapters.NewsAdaptor
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -49,7 +49,7 @@ class WorldNewsFragment : Fragment() {
 
         ButterKnife.bind(this, view)
 
-        val newsAdapter = NewsAdapater(requestManager)
+        val newsAdapter = NewsAdaptor(requireContext(), requestManager)
 
         viewModel.getArticles().observe(viewLifecycleOwner) {
             when(it) {

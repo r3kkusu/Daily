@@ -9,6 +9,7 @@
     <string name="thumbnail">Thumbnail</string>
     <string name="favicon">Favicon</string>
     <string name="failure_to_load">Failed to load content!</string>
+    <string name="back">Back</string>
 
     <string name="stub_news_site">nypost.com</string>
     <string name="stub_news_title">Rep. Jim Banks unloads on Pelosi, vows to get Jan. 6 answers via GOP panel - New York Post</string>

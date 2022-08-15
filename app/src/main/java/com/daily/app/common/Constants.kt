@@ -11,5 +11,7 @@ class Constants {
         // Database
         const val APP_DATABASE = "daily_db"
 
+        // Intent Constants
+        const val INTENT_URL = "intent_url"
     }
 }
