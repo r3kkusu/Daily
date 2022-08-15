@@ -14,8 +14,11 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import com.bumptech.glide.RequestManager
 import com.daily.app.R
+import com.daily.app.common.AppPreferences
 import com.daily.app.common.Resource
+import com.daily.app.domain.model.AppConfig
 import com.daily.app.ui.adapters.NewsAdaptor
+import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -50,6 +53,8 @@ class TopNewsFragment : Fragment() {
         ButterKnife.bind(this, view)
 
         val newsAdapter = NewsAdaptor(requireContext(), requestManager)
+        val prefJson = AppPreferences.getDefaultPreference(requireActivity().applicationContext)
+        val appConfig = Gson().fromJson(prefJson, AppConfig::class.java)
 
         viewModel.getArticles().observe(viewLifecycleOwner) {
             when(it) {
@@ -72,6 +77,11 @@ class TopNewsFragment : Fragment() {
                 }
             }
         }
+        viewModel.getTopHeadlines(
+            appConfig.country,
+            appConfig.language,
+            appConfig.filter_limit
+        )
 
         newsList.layoutManager = LinearLayoutManager(activity)
         newsList.adapter = newsAdapter

@@ -25,7 +25,7 @@ class TopNewsViewModel @Inject constructor(
     var job: Job? = null
 
     init {
-        getTopHeadlines()
+//        getTopHeadlines()
     }
 
     fun getTopHeadlines(
