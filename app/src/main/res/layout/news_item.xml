@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
-    android:paddingStart="2dp"
-    android:paddingEnd="2dp"
+    android:paddingStart="5dp"
+    android:paddingEnd="5dp"
     android:weightSum="3">
 
     <LinearLayout
@@ -46,8 +46,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="start|center_vertical"
-                android:paddingStart="4dp"
-                android:paddingEnd="4dp"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
                 android:text="@string/stub_news_site"
                 android:textColor="@color/black" />
         </LinearLayout>

@@ -19,8 +19,10 @@ class AppUtils {
         fun urlGrooming(url: String) : String {
             var groomUrl: String = if (url.contains("https://www.")) {
                 url.substringAfter("https://www.")
-            } else {
+            } else if (url.contains("http://www.")) {
                 url.substringAfter("http://www.")
+            } else {
+                url.substringAfter("http://")
             }
             return groomUrl
         }

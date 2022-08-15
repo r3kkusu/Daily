@@ -1,16 +1,19 @@
 package com.daily.app.ui.adapters
 
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.bumptech.glide.RequestManager
 import com.daily.app.R
 import com.daily.app.common.utils.AppUtils
+import com.daily.app.common.utils.DateUtils
 import com.daily.app.domain.model.Article
 
 class NewsAdapater constructor(
@@ -47,6 +50,7 @@ class NewsAdapater constructor(
         return NewsHolder(LayoutInflater.from(parent.context).inflate(R.layout.news_item, parent, false))
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: NewsHolder, position: Int) {
 
         val article: Article = articles[position]
@@ -62,7 +66,13 @@ class NewsAdapater constructor(
         }
 
         holder.newsTitle.text = article.title
-        holder.newsPublishedDate.text = article.published_date
+
+        val date1 = DateUtils.format(article.published_date, DateUtils.DATE_FORMAT_3);
+        val date2 = DateUtils.now()
+        val timeDiff = DateUtils.dateDiff(date1, date2)
+        val timeDiffDesc = DateUtils.dateDiffDescription(timeDiff)
+
+        holder.newsPublishedDate.text = timeDiffDesc
     }
 
     override fun getItemCount(): Int {
