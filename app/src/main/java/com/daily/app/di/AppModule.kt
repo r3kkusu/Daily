@@ -1,7 +1,11 @@
 package com.daily.app.di
 
+import android.R
 import android.app.Application
 import androidx.room.Room
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
+import com.bumptech.glide.request.RequestOptions
 import com.daily.app.common.Constants
 import com.daily.app.data.local.AppDB
 import com.daily.app.data.remote.AppAPI
@@ -40,5 +44,23 @@ object AppModule {
             AppDB::class.java,
             Constants.APP_DATABASE
         ).build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideRequestOptions(): RequestOptions {
+        return RequestOptions
+            .placeholderOf(R.mipmap.sym_def_app_icon)
+            .error(R.mipmap.sym_def_app_icon)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGlideInstance(
+        application: Application,
+        requestOptions: RequestOptions
+    ): RequestManager {
+        return Glide.with(application)
+            .setDefaultRequestOptions(requestOptions)
     }
 }

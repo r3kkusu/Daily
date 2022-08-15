@@ -4,4 +4,10 @@
     <string name="topic">Topic</string>
     <string name="search">Search</string>
     <string name="local_news">Local News</string>
+    <string name="thumbnail">Thumbnail</string>
+    <string name="favicon">Favicon</string>
+
+    <string name="stub_news_site">nypost.com</string>
+    <string name="stub_news_title">Rep. Jim Banks unloads on Pelosi, vows to get Jan. 6 answers via GOP panel - New York Post</string>
+    <string name="stub_news_published_date">2021-07-22T01:15:00+00:00</string>
 </resources>
