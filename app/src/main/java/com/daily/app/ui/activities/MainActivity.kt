@@ -8,6 +8,7 @@ import com.daily.app.R
 import com.daily.app.common.Resource
 import com.daily.app.common.utils.AppUtils
 import com.daily.app.ui.activities.main.top.TopNewsFragment
+import com.daily.app.ui.activities.main.world.WorldNewsFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 //
 //        }
 
+//        AppUtils.replaceFragment(this, WorldNewsFragment(), R.id.fragment_view)
         AppUtils.replaceFragment(this, TopNewsFragment(), R.id.fragment_view)
     }
 }

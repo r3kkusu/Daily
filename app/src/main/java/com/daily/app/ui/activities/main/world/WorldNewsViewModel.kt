@@ -1,4 +1,4 @@
-package com.daily.app.ui.activities.main.topic
+package com.daily.app.ui.activities.main.world
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -15,20 +15,20 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
-class TopicNewsViewModel @Inject constructor(
+class WorldNewsViewModel @Inject constructor(
     private val appRepo: AppRepo
 ) : ViewModel() {
 
-    private val TAG = "LocalNewsViewModel"
+    private val TAG = "WorldNewsViewModel"
 
     private val articles = MutableLiveData<Resource<List<Article>>>()
     var job: Job? = null
 
     init {
-        getTopicHeadlines()
+        getWorldNews()
     }
 
-    fun getTopicHeadlines(
+    fun getWorldNews(
         topic: String = "WORLD",
         country: String = "US",
         lang: String = "en",

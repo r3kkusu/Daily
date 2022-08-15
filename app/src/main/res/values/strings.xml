@@ -2,10 +2,13 @@
     <string name="app_name">Daily</string>
     <string name="top_news">Top News</string>
     <string name="topic">Topic</string>
+    <string name="world">World</string>
     <string name="search">Search</string>
     <string name="local_news">Local News</string>
+    <string name="local">Local</string>
     <string name="thumbnail">Thumbnail</string>
     <string name="favicon">Favicon</string>
+    <string name="failure_to_load">Failed to load content!</string>
 
     <string name="stub_news_site">nypost.com</string>
     <string name="stub_news_title">Rep. Jim Banks unloads on Pelosi, vows to get Jan. 6 answers via GOP panel - New York Post</string>

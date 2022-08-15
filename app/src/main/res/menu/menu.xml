@@ -6,14 +6,14 @@
         android:icon="@drawable/ic_baseline_star_24"
         android:title="@string/top_news" />
     <item
-        android:id="@+id/topic"
-        android:icon="@drawable/ic_baseline_topic_24"
-        android:title="@string/topic" />
+        android:id="@+id/world"
+        android:icon="@drawable/ic_baseline_language_24"
+        android:title="@string/world" />
 
     <item
         android:id="@+id/local"
         android:icon="@drawable/ic_baseline_location_on_24"
-        android:title="@string/local_news" />
+        android:title="@string/local" />
 
     <item
         android:id="@+id/search"
