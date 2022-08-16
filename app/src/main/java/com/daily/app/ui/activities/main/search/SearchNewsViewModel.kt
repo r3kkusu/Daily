@@ -24,10 +24,6 @@ class SearchNewsViewModel @Inject constructor(
     private val articles = MutableLiveData<Resource<List<Article>>>()
     var job: Job? = null
 
-    init {
-        searchNews()
-    }
-
     fun searchNews(
         term: String = "Covid",
         country: String = "US",
