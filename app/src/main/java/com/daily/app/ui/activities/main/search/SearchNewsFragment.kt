@@ -1,11 +1,14 @@
 package com.daily.app.ui.activities.main.search
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -32,6 +35,9 @@ class SearchNewsFragment : Fragment() {
 
     @BindView(R.id.newslist)
     lateinit var newsList: RecyclerView
+
+    @BindView(R.id.txt_search)
+    lateinit var txtSearch: EditText
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -68,12 +74,21 @@ class SearchNewsFragment : Fragment() {
                 }
             }
         }
-//        viewModel.searchNews(
-//            "Covid",
-//            appConfig.country,
-//            appConfig.language,
-//            appConfig.filter_limit
-//        )
+
+        txtSearch.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(charSequence: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(charSequence: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun afterTextChanged(editable: Editable) {
+                val term = editable.toString()
+                viewModel.searchNews(
+                    term,
+                    appConfig.country,
+                    appConfig.language,
+                    appConfig.filter_limit
+                )
+            }
+
+        })
 
         newsList.layoutManager = LinearLayoutManager(activity)
         newsList.adapter = newsAdapter
