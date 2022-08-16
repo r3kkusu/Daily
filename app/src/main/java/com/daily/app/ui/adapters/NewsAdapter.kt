@@ -2,6 +2,7 @@ package com.daily.app.ui.adapters
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
@@ -14,12 +15,16 @@ import androidx.recyclerview.widget.RecyclerView
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.bumptech.glide.RequestManager
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
 import com.daily.app.R
 import com.daily.app.common.Constants
 import com.daily.app.common.utils.AppUtils
 import com.daily.app.common.utils.DateUtils
 import com.daily.app.domain.model.Article
 import com.daily.app.ui.activities.news.NewsActivity
+
 
 class NewsAdapter constructor(
     private val context: Context,
@@ -71,13 +76,57 @@ class NewsAdapter constructor(
         }
 
         article.source.favicon?.let {
-            requestManager.load(it).into(holder.sourceFavicon)
+            requestManager
+                .load(it)
+//                .listener(object : RequestListener<Drawable> {
+//                    override fun onResourceReady(
+//                        resource: Drawable,
+//                        model: Any,
+//                        target: com.bumptech.glide.request.target.Target<Drawable>,
+//                        dataSource: DataSource?,
+//                        isFirstResource: Boolean
+//                    ): Boolean {
+//                        return false
+//                    }
+//
+//                    override fun onLoadFailed(
+//                        e: GlideException?,
+//                        model: Any,
+//                        target: com.bumptech.glide.request.target.Target<Drawable>?,
+//                        isFirstResource: Boolean
+//                    ): Boolean {
+//                        return false
+//                    }
+//                })
+                .into(holder.sourceFavicon)
         }
 
         holder.sourceSite.text = AppUtils.urlGrooming(article.source.url)
 
         article.thumbnail?.let {
-            requestManager.load(it).into(holder.newsThumbnail)
+            requestManager
+                .load(it)
+//                .listener(object : RequestListener<Drawable> {
+//                    override fun onResourceReady(
+//                        resource: Drawable,
+//                        model: Any,
+//                        target: com.bumptech.glide.request.target.Target<Drawable>,
+//                        dataSource: DataSource?,
+//                        isFirstResource: Boolean
+//                    ): Boolean {
+//                        return false
+//                    }
+//
+//                    override fun onLoadFailed(
+//                        e: GlideException?,
+//                        model: Any,
+//                        target: com.bumptech.glide.request.target.Target<Drawable>?,
+//                        isFirstResource: Boolean
+//                    ): Boolean {
+//                        return false
+//                    }
+//                })
+                .into(holder.newsThumbnail)
         }
 
         holder.newsTitle.text = article.title

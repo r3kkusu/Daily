@@ -16,7 +16,8 @@ interface AppAPI {
     suspend fun getTopHeadlines(
         @Query("country") country: String,
         @Query("lang") lang: String,
-        @Query("limit") limit: String
+        @Query("limit") limit: String,
+        @Query("media") media: Boolean = true
     ): ResponseDto
 
     @Headers(
@@ -28,7 +29,8 @@ interface AppAPI {
         @Query("topic") topic: String,
         @Query("country") country: String,
         @Query("lang") lang: String,
-        @Query("limit") limit: String
+        @Query("limit") limit: String,
+        @Query("media") media: Boolean = true
     ): ResponseDto
 
     @Headers(
@@ -41,6 +43,7 @@ interface AppAPI {
         @Query("country") country: String,
         @Query("lang") lang: String,
         @Query("limit") limit: String,
+        @Query("media") media: Boolean = true
     ): ResponseDto
 
     @Headers(
@@ -52,7 +55,8 @@ interface AppAPI {
         @Query("geo") geo: String,
         @Query("country") country: String,
         @Query("lang") lang: String,
-        @Query("limit") limit: String
+        @Query("limit") limit: String,
+        @Query("media") media: Boolean = true
     ): ResponseDto
 
 
