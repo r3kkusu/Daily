@@ -2,11 +2,11 @@ package com.daily.app.ui.activities.main.top
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -55,6 +55,7 @@ class TopNewsFragment : Fragment() {
         val newsAdapter = NewsAdapter(requireContext(), requestManager)
         val prefJson = AppPreferences.getDefaultPreference(requireActivity().applicationContext)
         val appConfig = Gson().fromJson(prefJson, AppConfig::class.java)
+        var pageCount = 1
 
         viewModel.getArticles().observe(viewLifecycleOwner) {
             when(it) {
@@ -77,13 +78,20 @@ class TopNewsFragment : Fragment() {
                 }
             }
         }
-        viewModel.getTopHeadlines(
-            appConfig.country,
-            appConfig.language,
-            appConfig.filter_limit
-        )
+        viewModel.getTopHeadlines(appConfig.country, appConfig.language, appConfig.filter_limit)
 
         newsList.layoutManager = LinearLayoutManager(activity)
         newsList.adapter = newsAdapter
+        newsList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    if (loadingLayout.visibility != View.VISIBLE) {
+                        val limit = (appConfig.filter_limit.toInt() * (++pageCount))
+                        viewModel.getTopHeadlines(appConfig.country, appConfig.language, limit.toString())
+                    }
+                }
+            }
+        })
     }
 }

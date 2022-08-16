@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val prefJson = Gson().toJson(AppConfig("WORLD", code, city, lang, 50.toString()))
+        val prefJson = Gson().toJson(AppConfig("WORLD", code, city, lang, 15.toString()))
         AppPreferences.setDefaultPreference(this, prefJson)
 
         initFragments()

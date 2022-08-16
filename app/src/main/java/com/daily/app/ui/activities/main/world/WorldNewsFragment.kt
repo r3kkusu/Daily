@@ -55,6 +55,7 @@ class WorldNewsFragment : Fragment() {
         val newsAdapter = NewsAdapter(requireContext(), requestManager)
         val prefJson = AppPreferences.getDefaultPreference(requireActivity().applicationContext)
         val appConfig = Gson().fromJson(prefJson, AppConfig::class.java)
+        var pageCount = 1
 
         viewModel.getArticles().observe(viewLifecycleOwner) {
             when(it) {
@@ -77,14 +78,22 @@ class WorldNewsFragment : Fragment() {
                 }
             }
         }
-        viewModel.getWorldNews(
-            appConfig.topic,
-            appConfig.country,
-            appConfig.language,
-            appConfig.filter_limit
-        )
+        viewModel.getWorldNews(appConfig.topic, appConfig.country, appConfig.language, appConfig.filter_limit)
 
         newsList.layoutManager = LinearLayoutManager(activity)
         newsList.adapter = newsAdapter
+        newsList.layoutManager = LinearLayoutManager(activity)
+        newsList.adapter = newsAdapter
+        newsList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+                if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    if (loadingLayout.visibility != View.VISIBLE) {
+                        val limit = (appConfig.filter_limit.toInt() * (++pageCount))
+                        viewModel.getWorldNews(appConfig.topic, appConfig.country, appConfig.language, limit.toString())
+                    }
+                }
+            }
+        })
     }
 }

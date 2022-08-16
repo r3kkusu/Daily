@@ -214,8 +214,9 @@ class AppRepoImp @Inject constructor(
                 }
 
                 emit(Resource.Success(articles))
-                emit(Resource.Loading(false))
             }
+
+            emit(Resource.Loading(false))
         }
     }
 }
