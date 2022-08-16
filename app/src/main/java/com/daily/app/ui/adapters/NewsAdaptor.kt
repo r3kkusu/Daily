@@ -1,10 +1,13 @@
 package com.daily.app.ui.adapters
 
+import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
@@ -12,17 +15,23 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import com.bumptech.glide.RequestManager
 import com.daily.app.R
+import com.daily.app.common.Constants
 import com.daily.app.common.utils.AppUtils
 import com.daily.app.common.utils.DateUtils
 import com.daily.app.domain.model.Article
+import com.daily.app.ui.activities.news.NewsActivity
 
-class NewsAdapater constructor(
+class NewsAdaptor constructor(
+    private val context: Context,
     private val requestManager: RequestManager
-) : RecyclerView.Adapter<NewsAdapater.NewsHolder>() {
+) : RecyclerView.Adapter<NewsAdaptor.NewsHolder>() {
 
     private var articles: List<Article> = listOf()
 
     class NewsHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+        @BindView(R.id.layout_root)
+        lateinit var layoutRoot: LinearLayout
 
         @BindView(R.id.news_source_favicon)
         lateinit var sourceFavicon: ImageView
@@ -54,6 +63,12 @@ class NewsAdapater constructor(
     override fun onBindViewHolder(holder: NewsHolder, position: Int) {
 
         val article: Article = articles[position]
+
+        holder.layoutRoot.setOnClickListener {
+            val intent = Intent(context, NewsActivity::class.java)
+            intent.putExtra(Constants.INTENT_URL, article.link)
+            context.startActivity(intent)
+        }
 
         article.source.favicon?.let {
             requestManager.load(it).into(holder.sourceFavicon)
