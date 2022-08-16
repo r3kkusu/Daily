@@ -1,4 +1,4 @@
-package com.daily.app.ui.activities.main.top
+package com.daily.app.ui.activities.main.world
 
 import android.os.Bundle
 import android.util.Log
@@ -20,10 +20,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class TopNewsFragment : Fragment() {
+class WorldNewsFragment : Fragment() {
 
-    private val TAG = "TopNewsFragment"
-    private val viewModel: TopNewsViewModel by viewModels()
+    private val TAG = "WorldNewsFragment"
+    private val viewModel: WorldNewsViewModel by viewModels()
 
     @Inject
     lateinit var requestManager: RequestManager
@@ -41,7 +41,7 @@ class TopNewsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_top_news, container, false)
+        return inflater.inflate(R.layout.fragment_world_news, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
