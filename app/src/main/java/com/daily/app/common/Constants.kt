@@ -13,5 +13,9 @@ class Constants {
 
         // Intent Constants
         const val INTENT_URL = "intent_url"
+
+        // Shared Preference Constants
+        const val PREF_NAME = "daily_pref"
+        const val PREF_KEY_DEFAULT_CONFIG = "pref_country"
     }
 }

@@ -46,6 +46,7 @@ class AppRepoImp @Inject constructor(
 
             remoteNews?.let { articleDtos ->
                 try {
+                    dao.clear(Categories.TOP.name)
                     articleDtos.articles.map {
                         dao.insert(it.toArticleEnt(Categories.TOP))
                     }
@@ -99,6 +100,7 @@ class AppRepoImp @Inject constructor(
 
             remoteNews?.let { articleDtos ->
                 try {
+                    dao.clear(Categories.TOPIC.name)
                     articleDtos.articles.map {
                         dao.insert(it.toArticleEnt(Categories.TOPIC))
                     }
@@ -152,6 +154,7 @@ class AppRepoImp @Inject constructor(
 
             remoteNews?.let { articleDtos ->
                 try {
+                    dao.clear(Categories.LOCAL.name)
                     articleDtos.articles.map {
                         dao.insert(it.toArticleEnt(Categories.LOCAL))
                     }

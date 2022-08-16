@@ -25,7 +25,7 @@ class WorldNewsViewModel @Inject constructor(
     var job: Job? = null
 
     init {
-        getWorldNews()
+//        getWorldNews()
     }
 
     fun getWorldNews(
