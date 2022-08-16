@@ -17,7 +17,7 @@ import com.daily.app.R
 import com.daily.app.common.AppPreferences
 import com.daily.app.common.Resource
 import com.daily.app.domain.model.AppConfig
-import com.daily.app.ui.adapters.NewsAdaptor
+import com.daily.app.ui.adapters.NewsAdapter
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -52,7 +52,7 @@ class TopNewsFragment : Fragment() {
 
         ButterKnife.bind(this, view)
 
-        val newsAdapter = NewsAdaptor(requireContext(), requestManager)
+        val newsAdapter = NewsAdapter(requireContext(), requestManager)
         val prefJson = AppPreferences.getDefaultPreference(requireActivity().applicationContext)
         val appConfig = Gson().fromJson(prefJson, AppConfig::class.java)
 

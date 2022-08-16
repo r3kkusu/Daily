@@ -21,10 +21,10 @@ import com.daily.app.common.utils.DateUtils
 import com.daily.app.domain.model.Article
 import com.daily.app.ui.activities.news.NewsActivity
 
-class NewsAdaptor constructor(
+class NewsAdapter constructor(
     private val context: Context,
     private val requestManager: RequestManager
-) : RecyclerView.Adapter<NewsAdaptor.NewsHolder>() {
+) : RecyclerView.Adapter<NewsAdapter.NewsHolder>() {
 
     private var articles: List<Article> = listOf()
 

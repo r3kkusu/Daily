@@ -50,7 +50,7 @@
                 android:paddingStart="6dp"
                 android:paddingEnd="6dp"
                 android:text="@string/stub_news_site"
-                android:textColor="@color/black" />
+                android:textColor="?android:textColorPrimary" />
         </LinearLayout>
 
         <TextView
@@ -62,7 +62,7 @@
             android:gravity="start|center_vertical"
             android:maxLines="2"
             android:text="@string/stub_news_title"
-            android:textColor="@color/black"
+            android:textColor="?android:textColorPrimary"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -73,7 +73,7 @@
             android:layout_weight="1"
             android:gravity="start|center_vertical"
             android:text="@string/stub_news_published_date"
-            android:textColor="@color/black"
+            android:textColor="?android:textColorPrimary"
             android:textStyle="italic" />
 
     </LinearLayout>
