@@ -18,4 +18,9 @@ Core libraries use to develop the app
 7. ViewModel and LiveData
 8. GSON
 
+The application supports pagination, data caching, and searching.
+
 **DEMO**
+
+![demo](https://user-images.githubusercontent.com/8465561/184842295-9a5865f0-48e9-4e85-b171-070331b66682.gif)
+
