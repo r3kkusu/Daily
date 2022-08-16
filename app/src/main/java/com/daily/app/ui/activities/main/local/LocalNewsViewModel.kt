@@ -24,10 +24,6 @@ class LocalNewsViewModel @Inject constructor(
     private val articles = MutableLiveData<Resource<List<Article>>>()
     var job: Job? = null
 
-    init {
-        getLocalNews()
-    }
-
     fun getLocalNews(
         geo: String = "New York",
         country: String = "US",

@@ -24,10 +24,6 @@ class WorldNewsViewModel @Inject constructor(
     private val articles = MutableLiveData<Resource<List<Article>>>()
     var job: Job? = null
 
-    init {
-//        getWorldNews()
-    }
-
     fun getWorldNews(
         topic: String = "WORLD",
         country: String = "US",

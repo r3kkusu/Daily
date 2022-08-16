@@ -24,10 +24,6 @@ class TopNewsViewModel @Inject constructor(
     private val articles = MutableLiveData<Resource<List<Article>>>()
     var job: Job? = null
 
-    init {
-//        getTopHeadlines()
-    }
-
     fun getTopHeadlines(
         country: String = "US",
         lang: String = "en",
